@@ -1,5 +1,7 @@
 import { Cpu, Bluetooth, Gauge, Waves, Weight } from 'lucide-react'
 
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 const specs = [
   { icon: Gauge, label: 'Acoustic Driver', value: '40mm Custom Beryllium-Coated Dynamic' },
   { icon: Waves, label: 'Frequency Range', value: '4Hz – 45,000Hz (Hi-Res Audio Certified)' },
@@ -19,21 +21,14 @@ export default function SpecBreakdown() {
       </div>
 
       <div className="max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left — exploded driver diagram */}
+        {/* Left — real exploded driver image */}
         <div className="relative flex items-center justify-center min-h-[380px]">
           <div className="absolute w-[280px] h-[280px] bg-accent/8 rounded-full blur-[80px]" />
-          <div className="relative flex flex-col items-center gap-3">
-            <div className="w-48 h-2.5 rounded-full bg-accent/25 border border-accent/40" />
-            <div className="w-44 h-5 rounded-full bg-[#1a1a1f] border border-white/10" />
-            <div className="w-40 h-10 rounded-full bg-gradient-to-r from-[#15151a] to-[#08080A] border border-white/15 flex items-center justify-center">
-              <span className="text-[10px] text-accent font-mono">40mm DRIVER</span>
-            </div>
-            <div className="w-36 h-4 rounded-full bg-[#1a1a1f] border border-white/10" />
-            <div className="w-32 h-8 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center">
-              <span className="text-[9px] text-accent/70 font-mono">MAGNET</span>
-            </div>
-            <div className="w-28 h-2.5 rounded-full bg-[#1a1a1f] border border-white/10" />
-          </div>
+          <img
+            src={`${IMG}/c1e6772d3_Frame.png`}
+            alt="Exploded view of AURA PRO acoustic driver"
+            className="relative z-10 max-w-full max-h-[450px] object-contain rounded-2xl"
+          />
         </div>
 
         {/* Right — spec table */}

@@ -1,17 +1,18 @@
 import { ShoppingCart, GitCompare } from 'lucide-react'
 
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 export default function FinalCTA() {
   return (
     <section id="order" className="relative py-24 md:py-32 px-6 md:px-20 overflow-hidden">
-      {/* Glow */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[700px] h-[700px] rounded-full bg-accent/8 blur-[150px]" />
-      </div>
-
-      {/* Wave SVG */}
-      <svg className="absolute bottom-0 left-0 w-full h-24 opacity-15" viewBox="0 0 1440 100" preserveAspectRatio="none">
-        <path d="M0,50 Q360,0 720,50 T1440,50 V100 H0 Z" fill="#00F0FF" />
-      </svg>
+      {/* Real wave background */}
+      <img
+        src={`${IMG}/596a289e5_final-cta.png`}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
+      />
+      {/* Gradient overlay for text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-base/70 via-base/40 to-base/80 pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center gap-6 relative z-10">
         <div className="badge">EXCLUSIVE RELEASE OFFER</div>

@@ -1,3 +1,5 @@
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 export default function Hero() {
   return (
     <section className="relative pt-[160px] md:pt-[120px] pb-[120px] md:mb-8 overflow-hidden">
@@ -45,37 +47,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — headphone visual */}
+        {/* Right — real product photo */}
         <div className="relative flex items-center justify-center flex-1 min-h-[300px] lg:min-h-[600px]">
-          <div className="absolute w-[320px] h-[320px] md:w-[420px] md:h-[420px] bg-accent/10 rounded-full blur-[80px] animate-glow" />
-          <div className="relative animate-float">
-            <div className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px]">
-              {/* Headband */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[220px] h-[130px] md:w-[300px] md:h-[170px]
-                border-[12px] md:border-[16px] border-[#1a1a1f] border-b-transparent rounded-t-full" />
-              {/* Sliders */}
-              <div className="absolute top-[120px] left-[24px] w-[10px] h-[40px] bg-[#1a1a1f] rounded-sm" />
-              <div className="absolute top-[120px] right-[24px] w-[10px] h-[40px] bg-[#1a1a1f] rounded-sm" />
-              {/* Left ear cup */}
-              <div className="absolute bottom-2 left-0 w-[110px] h-[110px] md:w-[140px] md:h-[140px]
-                rounded-full bg-gradient-to-br from-[#15151a] to-[#08080A] border border-[#2a2a2f]
-                flex items-center justify-center shadow-2xl">
-                <div className="w-[55px] h-[55px] md:w-[70px] md:h-[70px] rounded-full border-2 border-accent/40
-                  bg-accent/5 flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_12px_rgba(0,240,255,0.8)]" />
-                </div>
-              </div>
-              {/* Right ear cup */}
-              <div className="absolute bottom-2 right-0 w-[110px] h-[110px] md:w-[140px] md:h-[140px]
-                rounded-full bg-gradient-to-br from-[#15151a] to-[#08080A] border border-[#2a2a2f]
-                flex items-center justify-center shadow-2xl">
-                <div className="w-[55px] h-[55px] md:w-[70px] md:h-[70px] rounded-full border-2 border-accent/40
-                  bg-accent/5 flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-accent shadow-[0_0_12px_rgba(0,240,255,0.8)]" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="absolute w-[320px] h-[320px] md:w-[460px] md:h-[460px] bg-accent/10 rounded-full blur-[90px] animate-glow" />
+          <img
+            src={`${IMG}/b97c29f92_Rectangle.png`}
+            alt="AURA PRO headphones"
+            className="relative z-10 max-w-full max-h-[500px] object-contain animate-float drop-shadow-[0_0_40px_rgba(0,240,255,0.15)]"
+          />
         </div>
       </div>
     </section>

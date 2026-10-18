@@ -1,5 +1,7 @@
 import { Check } from 'lucide-react'
 
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 const items = [
   '1x AURA PRO Headphone',
   '1x Hard Shell Travel Case',
@@ -31,20 +33,14 @@ export default function Unboxing() {
           ))}
         </div>
 
-        {/* Right — stylized package visual */}
-        <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 bg-panel">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute w-[200px] h-[200px] bg-accent/8 rounded-full blur-[60px]" />
-            <div className="relative flex flex-col items-center gap-2">
-              {/* Stylized case */}
-              <div className="w-48 h-32 rounded-2xl bg-gradient-to-br from-[#1a1a1f] to-[#08080A] border border-white/10 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full border-2 border-accent/30 bg-accent/5 flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(0,240,255,0.6)]" />
-                </div>
-              </div>
-              <span className="font-mono text-[11px] text-muted uppercase tracking-widest mt-2">Premium Packaging</span>
-            </div>
-          </div>
+        {/* Right — real packaging photo */}
+        <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
+          <img
+            src={`${IMG}/687b3f57a_Frame2.png`}
+            alt="AURA PRO premium packaging and accessories"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-base/40 to-transparent" />
         </div>
       </div>
     </section>

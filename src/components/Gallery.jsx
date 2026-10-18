@@ -1,8 +1,10 @@
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 const images = [
-  { url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80', label: 'Studio Close-Up' },
-  { url: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=600&q=80', label: 'Cyberpunk City Wear' },
-  { url: 'https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=600&q=80', label: 'Gaming Setup' },
-  { url: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80', label: 'Daily Commute' },
+  { url: `${IMG}/92eeb6605_Rectangle1.png`, label: 'Product Detail' },
+  { url: `${IMG}/5a4f11879_Rectangle2.png`, label: 'Engineered Hinge' },
+  { url: `${IMG}/0825758f6_Rectangle3.png`, label: 'Neon City' },
+  { url: `${IMG}/49076f822_Rectangle4.png`, label: 'Cyber Station' },
 ]
 
 export default function Gallery() {

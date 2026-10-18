@@ -1,20 +1,25 @@
 import { Star, Quote } from 'lucide-react'
 
+const IMG = 'https://media.base44.com/images/public/6ad49dd8c083e49bc52fdccb'
+
 const testimonials = [
   {
     quote: "The adaptive ANC is genuinely the best I've tested. The 40mm driver delivers a level of clarity that rivals studio monitors I've worked with for twenty years.",
     name: 'Alex Chen',
     title: 'Studio Lead Engineer',
+    avatar: `${IMG}/4ad8f6012_Ellipse.png`,
   },
   {
     quote: "Build quality is exceptional — machined aluminum that feels premium in hand. Spatial audio head-tracking is so precise it feels like a dedicated theater room.",
     name: 'Sarah Vance',
     title: 'Senior Tech Critic',
+    avatar: `${IMG}/66b60a993_Ellipse2.png`,
   },
   {
     quote: "48 hours of real-world battery is not marketing fluff. I flew coast to coast twice on a single charge with ANC on the entire time. Utterly reliable.",
     name: 'Kaelen Cross',
     title: 'Audio Engineer',
+    avatar: null,
   },
 ]
 
@@ -41,9 +46,11 @@ export default function Testimonials() {
               </p>
             </div>
             <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00F0FF] to-[#00d8d6] flex items-center justify-center font-display font-bold text-[16px] text-[#08080A]">
-                A
-              </div>
+              <img
+                src={`${IMG}/4ad8f6012_Ellipse.png`}
+                alt="Alex Chen"
+                className="w-10 h-10 rounded-full object-cover"
+              />
               <div>
                 <p className="font-sans font-semibold text-[14px] text-[#08080A]">Alex Chen</p>
                 <p className="font-sans font-normal text-[12px] text-[#999]">Verified Buyer</p>
@@ -70,9 +77,18 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="font-sans font-normal text-[13px] leading-[150%] text-white/70 flex-1">"{t.quote}"</p>
-              <div className="pt-3 border-t border-white/5">
-                <p className="font-sans font-semibold text-[14px] text-white">{t.name}</p>
-                <p className="font-sans font-normal text-[12px] text-accent/70">{t.title}</p>
+              <div className="pt-3 border-t border-white/5 flex items-center gap-3">
+                {t.avatar ? (
+                  <img src={t.avatar} alt={t.name} className="w-9 h-9 rounded-full object-cover" />
+                ) : (
+                  <div className="w-9 h-9 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center font-display font-bold text-[14px] text-accent">
+                    {t.name.charAt(0)}
+                  </div>
+                )}
+                <div>
+                  <p className="font-sans font-semibold text-[14px] text-white">{t.name}</p>
+                  <p className="font-sans font-normal text-[12px] text-accent/70">{t.title}</p>
+                </div>
               </div>
             </div>
           ))}
