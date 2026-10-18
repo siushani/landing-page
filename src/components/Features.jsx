@@ -1,55 +1,45 @@
-import { Battery, Brain, Award, Headphones } from 'lucide-react'
-
 const features = [
   {
-    icon: Battery,
-    title: '48+ Hours',
+    node: 'SECURE_NODE // 01',
+    stat: '40+ Hours',
     subtitle: 'Laser Battery Life',
-    desc: 'Extended playback with fast-charge support — 10 minutes yields 5 hours of audio.',
+    desc: 'High-density reserve cells deliver 40 hours of playtime with Active ANC turned on. Quick-charge via cyber USB-C grants 8 hours of power in just 10 minutes.',
   },
   {
-    icon: Brain,
-    title: 'Adaptive ANC',
+    node: 'SECURE_NODE // 02',
+    stat: 'Adaptive ANC',
     subtitle: 'Cognitive Smart Cancellation',
-    desc: 'Real-time environment noise detection adjusts suppression levels 50,000 times per second.',
+    desc: 'Six internal hybrid microphones process environmental noises 48,000 times per second to create perfectly responsive counter-phase acoustic blockages.',
   },
   {
-    icon: Award,
-    title: 'Hi-Res Cert',
+    node: 'SECURE_NODE // 03',
+    stat: 'Hi-Res Cert',
     subtitle: 'Audiophile Acoustic Grade',
-    desc: 'Certified driver systems deliver studio-reference frequency response across the spectrum.',
-  },
-  {
-    icon: Headphones,
-    title: 'Spatial Audio',
-    subtitle: '360° Dynamic Head-Tracking',
-    desc: 'Immersive surround sound with gyroscopic head-tracking for a theater-grade experience.',
+    desc: 'Custom 40mm beryllium-coated dynamic drivers output rich, low distortion bass and crisp sparkling trebles certified for studio master-tier frequencies.',
   },
 ]
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-neon/30 bg-cyan-neon/5 text-xs font-semibold text-cyan-neon tracking-widest uppercase mb-4">
-            Uncompromising Hardware
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold">Machined For Audio Perfectionists</h2>
-        </div>
+    <section id="features" className="py-20 md:py-24 px-6 md:px-20">
+      <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center gap-5 mb-14">
+        <div className="badge">UNCOMPROMISING HARDWARE</div>
+        <h2 className="font-display font-extrabold text-[28px] md:text-[40px] text-white">
+          Machined For Audio Perfectionists
+        </h2>
+      </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="glass-card p-8 group hover:border-cyan-neon/30 hover:bg-cyan-neon/[0.05] transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-cyan-neon/10 border border-cyan-neon/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                <f.icon className="text-cyan-neon" size={24} />
-              </div>
-              <h3 className="text-2xl font-extrabold mb-1">{f.title}</h3>
-              <p className="text-cyan-neon text-sm font-semibold mb-3">{f.subtitle}</p>
-              <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
-        </div>
+      <div className="max-w-[1440px] mx-auto grid md:grid-cols-3 gap-6">
+        {features.map((f) => (
+          <div key={f.node} className="card flex flex-col gap-4 text-left">
+            <span className="font-mono font-normal text-[12px] text-accent">{f.node}</span>
+            <h3 className="font-mono font-extrabold text-[28px] md:text-[32px] text-white leading-tight">
+              {f.stat}
+            </h3>
+            <p className="font-display font-bold text-[18px] md:text-[20px] text-white">{f.subtitle}</p>
+            <p className="font-sans font-normal text-[14px] leading-[150%] text-muted">{f.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   )

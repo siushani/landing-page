@@ -1,79 +1,70 @@
 import { AudioWaveform } from 'lucide-react'
 
 export default function ANCSimulator() {
-  // Generate waveform paths
-  const generateWave = (offset, amplitude, frequency, phase, width, height, color, dashed = false) => {
-    const points = []
-    for (let x = 0; x <= width; x += 4) {
-      const y = height / 2 + Math.sin((x * frequency + phase) * 0.05) * amplitude + offset
-      points.push(`${x === 0 ? 'M' : 'L'} ${x} ${y}`)
+  // Generate noisy waveform (left — chaotic red)
+  const noisePath = (() => {
+    const pts = []
+    for (let x = 0; x <= 400; x += 3) {
+      const y = 60 + Math.sin(x * 0.08) * 22 + Math.sin(x * 0.03) * 14 + (Math.random() - 0.5) * 8
+      pts.push(`${x === 0 ? 'M' : 'L'} ${x} ${y.toFixed(1)}`)
     }
-    return { d: points.join(' '), color, dashed }
-  }
+    return pts.join(' ')
+  })()
 
-  const width = 500
-  const height = 100
-
-  const waves = [
-    generateWave(0, 28, 2, 0, width, height, '#ff4757'),
-    generateWave(0, 28, 2, 180, width, height, '#00F2FE', true),
-    generateWave(0, 14, 4, 90, width, height, '#ff4757', true),
-    generateWave(0, 14, 4, 270, width, height, '#00F2FE'),
-  ]
+  // Generate flat-ish anti-noise (right — cyan, near-zero)
+  const calmPath = (() => {
+    const pts = []
+    for (let x = 0; x <= 400; x += 3) {
+      const y = 60 + Math.sin(x * 0.08) * 1.5
+      pts.push(`${x === 0 ? 'M' : 'L'} ${x} ${y.toFixed(1)}`)
+    }
+    return pts.join(' ')
+  })()
 
   return (
-    <section className="relative py-24 px-6">
-      <div className="max-w-5xl mx-auto text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-neon/30 bg-cyan-neon/5 text-xs font-semibold text-cyan-neon tracking-widest uppercase mb-4">
-          <AudioWaveform size={12} /> Adaptive ANC Simulator
+    <section id="anc" className="bg-panel py-20 md:py-24 px-6 md:px-20 mb-12">
+      <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center gap-5">
+        <div className="badge">
+          <AudioWaveform size={12} /> ADAPTIVE ANC SIMULATOR
         </div>
-        <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Destructive Wave Cancellation</h2>
-        <p className="text-white/60 max-w-2xl mx-auto">
-          Active phase-inversion technology generates a mirror-image waveform in real-time,
-          neutralizing external noise before it reaches your ear.
+
+        <h2 className="font-display font-extrabold text-[28px] md:text-[36px] text-white">
+          Destructive Wave Cancellation
+        </h2>
+
+        <p className="font-sans font-normal text-[14px] md:text-[15px] leading-[160%] text-muted max-w-2xl">
+          Observe how the dual cyber-sensors detect incoming low-frequency noise and instantly
+          generate an opposing anti-phase wave, dropping ambient feedback to zero decibels.
         </p>
-      </div>
 
-      <div className="max-w-5xl mx-auto glass-card p-8 md:p-12">
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* External noise */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-sm font-semibold text-red-400">Outside Ambient Noise</span>
-              <span className="text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400 font-mono">90 dB</span>
+        {/* Visualization container */}
+        <div className="w-full bg-base border border-white rounded-2xl p-6 md:p-8 mt-4">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left — noise */}
+            <div className="flex flex-col gap-4">
+              <span className="font-mono font-normal text-[12px] text-muted">
+                OUTSIDE AMBIENT NOISE (90dB)
+              </span>
+              <div className="bg-black/40 rounded-xl p-4 border border-red-500/20 overflow-hidden h-[120px] flex items-center">
+                <svg viewBox="0 0 400 120" className="w-full h-full" preserveAspectRatio="none">
+                  <path d={noisePath} fill="none" stroke="#ff4757" strokeWidth="2" className="animate-wave-noise" />
+                  <path d={noisePath} fill="none" stroke="#ff4757" strokeWidth="1" opacity="0.4"
+                    transform="translate(0, 10)" className="animate-wave-noise" />
+                </svg>
+              </div>
             </div>
-            <div className="relative bg-black/30 rounded-xl p-4 overflow-hidden border border-red-500/20">
-              <svg viewBox={`0 0 ${width} ${height}`} className="w-full" preserveAspectRatio="none">
-                <path d={waves[0].d} fill="none" stroke={waves[0].color} strokeWidth="2" className="animate-wave-slow" />
-                <path d={waves[2].d} fill="none" stroke={waves[2].color} strokeWidth="1.5" strokeDasharray="4 4" className="animate-wave-fast" opacity="0.6" />
-              </svg>
-            </div>
-          </div>
 
-          {/* Anti-noise */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-sm font-semibold text-cyan-neon">Anti-Noise Correction Active</span>
-              <span className="text-xs px-2 py-1 rounded-full bg-cyan-neon/10 text-cyan-neon font-mono">0 dB</span>
-            </div>
-            <div className="relative bg-black/30 rounded-xl p-4 overflow-hidden border border-cyan-neon/20">
-              <svg viewBox={`0 0 ${width} ${height}`} className="w-full" preserveAspectRatio="none">
-                <path d={waves[1].d} fill="none" stroke={waves[1].color} strokeWidth="2" strokeDasharray="4 4" className="animate-wave-slow" />
-                <path d={waves[3].d} fill="none" stroke={waves[3].color} strokeWidth="1.5" className="animate-wave-fast" opacity="0.6" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* Result bar */}
-        <div className="mt-8 flex items-center gap-4 p-4 rounded-xl bg-cyan-neon/5 border border-cyan-neon/20">
-          <div className="flex-1">
-            <div className="flex justify-between text-xs text-white/50 mb-2">
-              <span>Noise Reduction</span>
-              <span className="text-cyan-neon font-mono">-45 dB</span>
-            </div>
-            <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div className="h-full w-[90%] bg-gradient-to-r from-cyan-neon to-cyan-teal rounded-full" />
+            {/* Right — cancelled */}
+            <div className="flex flex-col gap-4">
+              <span className="font-mono font-normal text-[12px] text-accent">
+                ANTI-NOISE CORRECTION ACTIVE (0dB)
+              </span>
+              <div className="bg-black/40 rounded-xl p-4 border border-accent/20 overflow-hidden h-[120px] flex items-center">
+                <svg viewBox="0 0 400 120" className="w-full h-full" preserveAspectRatio="none">
+                  <path d={calmPath} fill="none" stroke="#00F0FF" strokeWidth="2" strokeDasharray="6 6"
+                    className="animate-wave-calm" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
