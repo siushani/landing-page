@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-obsidian text-white antialiased;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-2xl;
+  }
+  .cyan-glow {
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.25), 0 0 60px rgba(0, 242, 254, 0.1);
+  }
+  .btn-primary {
+    @apply bg-cyan-neon text-obsidian font-semibold px-6 py-3 rounded-full hover:shadow-[0_0_30px_rgba(0,242,254,0.5)] transition-all duration-300 hover:scale-105;
+  }
+  .btn-outline {
+    @apply border border-white/20 text-white font-semibold px-6 py-3 rounded-full hover:border-cyan-neon hover:text-cyan-neon transition-all duration-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0b0f17; }
+::-webkit-scrollbar-thumb { background: #1a2030; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00F2FE; }
